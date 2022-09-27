@@ -9,6 +9,11 @@ app.use(express.json());
 app.use(cors());
 app.use("/cats", CatsRouter);
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
+
+app.get('/cors', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.send({ "msg": "This has CORS enabled 🎈" })
+  })
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
